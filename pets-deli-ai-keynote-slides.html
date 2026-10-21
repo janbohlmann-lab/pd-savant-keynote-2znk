@@ -263,10 +263,10 @@ window.ICONS={
 </script>
 <script>
 /* M-073 · PD_CONTENT — single source for every number and card text (slides, website, video).
-   STATUS: v1 (21.10.2026) — filled by Agent K from 01-inventar.md; sources per number in 03-content.md.
+   STATUS: v2 (21.10.2026, + Metabase 06 + Recherche 07) — filled by Agent K from 01-inventar.md; sources per number in 03-content.md.
    Numbers are display strings. Public-safe: no hosts, people (except the speaker), competitors, € potentials. */
 window.PD_CONTENT = {
-  status: 'v1',
+  status: 'v2',
   asOf: 'October 2026',
   heads: {
     better: { n: '5–7% → 0', c: 'factual errors in product content, before and after our fact gate' },
@@ -274,18 +274,19 @@ window.PD_CONTENT = {
     faster: { n: '1 day', c: 'for a full market analysis that used to take weeks' }
   },
   counters: { studies: '406', reviews: '50,022', rules: '85', documents: '1,097' },
+  facts: { shops: '4', channels: '8', products: '~400', profiles: '350,000+' },
   sections: {
     better: [
       { id: 'factgate', icon: 'shield-check', title: 'Fact Gate', line: 'Every product claim is checked against recipe and rules.', status: 'live',
         kpi: { n: '5–7% → 0', c: 'factual errors in product content (re-audit)' },
         detail: { what: 'Before any AI text reaches the shop, code checks every claim against the recipe data and our rule set. The language model only writes; it never decides what is true.',
-          how: ['85 rules checked automatically: 52 claim and compliance rules, 33 rules for how we talk about pets', 'Facts come from the product database and 406 studies in Knowly', 'Anything that fails stays a draft for a human'],
+          how: ['85 rules checked automatically: 52 claim and compliance rules, 33 rules for how we talk about pets', '54,000+ automatic checks on claims, tone and facts since late May — nine in ten calls to Knowly are checks, not chats', 'Facts come from the product database and 406 studies in Knowly', 'Anything that fails stays a draft for a human'],
           connected: ['knowly', 'rules', 'products', 'shop'], note: 'Re-audit of shop content, June 2026.' } },
-      { id: 'reco', icon: 'target', title: 'Right product', line: 'Recommendations for each pet profile, with the reason why.', status: 'live',
-        kpi: { n: '30 × 116', c: 'pet profiles × products, ranked on evidence' },
-        detail: { what: 'Which product fits which pet is decided by evidence and rules, not by a chatbot. Every recommendation can explain itself.',
-          how: ['Profiles by species, age, size and needs', 'Ranking built on our own data plus the study base', 'The same logic serves service answers and content'],
-          connected: ['knowly', 'service'], note: 'Ranking data as of September 2026.' } },
+      { id: 'reco', icon: 'target', title: 'Right product', line: 'Product lists ranked for each pet profile, with the reason why.', status: 'live',
+        kpi: { n: '1.4×', c: 'clicks on personalised lists vs. category lists' },
+        detail: { what: 'Personalisation starts with the pet. The shop has adapted to each dog or cat for years; AI now writes the variants — personalised product-page sections for the top pet segments, checked by the Fact Gate before a person publishes them.',
+          how: ['350,000+ pet profiles, about 9,000 new every month', 'More than half of new customers now start with a pet profile — early 2025 it was one in eight', 'About a third of tracked online purchase value comes through personalised product lists', '24 dog segments each see their own homepage; 600+ personalised content points', 'Behind service answers and content: 30 pet profiles × 116 products, ranked on evidence'],
+          connected: ['knowly', 'service', 'shop'], note: 'Shop tracking 2026, consented sessions; last-list attribution measures reach and use, not extra revenue.' } },
       { id: 'service', icon: 'message-circle-heart', title: 'Service Assist', line: 'Reply drafts for customer care, grounded in evidence.', status: 'live',
         kpi: { n: '~5 s', c: 'per reply draft, at about half a US cent' },
         detail: { what: 'A customer writes in. Service Assist reads the ticket, finds the right products and facts in Knowly and drafts an answer. A person reviews and sends it.',
@@ -304,9 +305,9 @@ window.PD_CONTENT = {
           how: ['Images from the Visual Machine, with real logo and fonts', 'Layout follows the image; machine QC flags contrast, margins and logo space', 'A human approves every single ad before upload, labelled as AI-made'],
           connected: ['visual', 'knowly', 'schieber', 'meta'], note: 'Stage 1 in production, October 2026.' } },
       { id: 'visualmachine', icon: 'image', title: 'Visual Machine', line: 'On-brand images on demand, logo and fonts always exact.', status: 'live',
-        kpi: { n: '160', c: 'complete Amazon image sets from our own machine' },
+        kpi: { n: '160', c: 'Amazon products with full image sets in under a week — before: about 10 a week' },
         detail: { what: 'Our in-house image engine. The model paints, code sets logo, type and packaging, so brand details never drift.',
-          how: ['≈ $0.05 per image in high quality', 'Up to ~250 images a night', 'Feeds the Ad Machine, Amazon and the shop'],
+          how: ['≈ $0.05 per image in high quality, up to ~250 a night', 'About 1,600 marketplace images made in-house', 'Two in three pass the designer’s first look; the rest are fixed in batches', 'Feeds the Ad Machine, Amazon and the shop'],
           connected: ['ad', 'market', 'shop', 'knowly'], note: 'Image model upgraded September 2026.' } },
       { id: 'videoads', icon: 'play', title: 'AI Video Ads', line: 'AI-made video ads, already running on social.', status: 'live',
         kpi: { n: 'Live', c: 'on paid social since September' },
@@ -323,27 +324,27 @@ window.PD_CONTENT = {
       { id: 'market', icon: 'radar', title: 'Market analysis', line: 'A full market analysis in a day, every figure double-checked.', status: 'live',
         kpi: { n: '1 day', c: 'instead of weeks: 32 agents, 26 figures verified' },
         detail: { what: 'Research agents work in parallel; a second set of agents checks every number against its source before anything reaches a slide.',
-          how: ['Used for our Dutch market entry', 'Adversarial checking, not a black box', 'The same method now runs on our own data warehouse'],
+          how: ['Used for our Dutch market entry', 'Adversarial checking, not a black box: the checking agents caught invented shipping prices before they reached a decision', 'The same method now runs on our own data warehouse'],
           connected: ['analyst', 'biz'], note: 'Netherlands market analysis, 2026.' } },
       { id: 'amazon', icon: 'boxes', title: 'Amazon listings', line: 'Product listings back live in under 90 minutes, not a week.', status: 'live',
         kpi: { n: '~80 min', c: 'for images and listing, instead of about a week' },
         detail: { what: 'The marketplace team rebuilt its listing work around our image machine and an AI connector to the marketplace.',
-          how: ['Images from the Visual Machine', 'Listing text and upload assisted by AI', 'Reported by the marketplace team'],
-          connected: ['visual', 'market'], note: 'Reported by the team, September 2026.' } },
+          how: ['Images from the Visual Machine, listing text and upload assisted by AI', 'Our Amazon range more than doubled in 2026: from about 105 to about 275 products selling each month', 'Orders up 55% in September and 67% in October year on year — the expansion started in May; AI keeps it fast and affordable'],
+          connected: ['visual', 'market'], note: 'Timing reported by the team (September 2026); orders from our data warehouse, observational.' } },
       { id: 'backoffice', icon: 'workflow', title: 'Back-office AI', line: 'AI skills the order team built for itself.', status: 'live',
         kpi: { n: '3–4 h', c: 'saved on every bank day (~100 invoices)' },
         detail: { what: 'A colleague in the B2B back office built eight AI skills for his own daily work — no engineers involved.',
           how: ['~30 minutes saved per new customer set-up', 'Reviewed for quality, security and data protection', 'Now becoming a shared skill hub for other teams'],
           connected: ['agents', 'team'], note: 'Self-reported by the team, 2026.' } },
       { id: 'agents', icon: 'bot', title: 'Personal agents', line: 'An AI agent on every desk, wired to our own tools.', status: 'live',
-        kpi: { n: '41', c: 'ready-made skills, many built by the teams' },
+        kpi: { n: '49', c: 'ready-made skills, many built by the teams' },
         detail: { what: 'Colleagues work with their own AI agent that can read our documents, query our data and use shared skills.',
-          how: ['25+ colleagues with their own agent', 'One connector layer to documents, data warehouse, tickets and chat', 'Every agent asks the same Knowly brain'],
-          connected: ['knowly', 'analyst'], note: 'As of September 2026.' } }
+          how: ['70+ colleagues with their own AI seat', 'One seat reaches about 300 tools through 14 connectors — documents, data warehouse, tickets, chat', 'Every agent can ask the same Knowly brain'],
+          connected: ['knowly', 'analyst'], note: 'As of October 2026.' } }
     ]
   },
   insights: {
-    better: 'Better needs what only we have: 406 studies, 50,022 reviews and 85 rules in one brain.',
+    better: 'Better needs what only we have: 350,000+ pet profiles, 406 studies, 50,022 reviews and 85 rules.',
     bigger: 'Bigger without losing the brand: logo and fonts are set by code, and a person approves every ad.',
     faster: 'Faster is the part everyone will have. We use it to buy time for better.'
   },
@@ -357,22 +358,22 @@ window.PD_CONTENT = {
     { m: '~10 a day', c: 'finished ads, each labelled as AI-made' }
   ],
   journeyLive: 'Producing every day',
-  network: { people: '25+ colleagues work with their own AI agent. Agents reach documents, data, tickets and chat through one connector layer — and every one of them can ask the same brain.' },
+  network: { people: '70+ colleagues have their own AI seat. One seat reaches about 300 tools through 14 connectors — documents, data, tickets, chat — and every agent can ask the same brain.' },
   enables: [
     { icon: 'puzzle', title: 'New machines in days', line: 'Every new machine starts with everything the others already know.', proof: 'The Schieber went from idea to working editor in a few days.' },
     { icon: 'circle-check', title: 'One truth everywhere', line: 'Shop text, service reply and ad use the same facts and rules.', proof: 'Factual errors in product content: 5–7% → 0.' },
     { icon: 'refresh-ccw', title: 'Rent models, own the system', line: 'We swap models when better ones arrive. Our knowledge stays.', proof: 'Image model upgraded in one evening; seven model services, one network.' },
-    { icon: 'globe', title: 'New markets, same rails', line: 'A new country reuses every machine we already have.', proof: 'Netherlands live since 16 October 2026.' }
+    { icon: 'globe', title: 'New markets, same rails', line: 'A new country reuses every machine we already have.', proof: 'Netherlands live since 16 October 2026 — the Dutch shop was translated with AI.' }
   ],
   next: [
     { icon: 'languages', title: 'Translation Machine', line: 'Every text and asset localised in our tone, not word for word.', when: 'In pilot' },
     { icon: 'palette', title: 'Design Hub', line: 'One place where every team gets on-brand assets.', when: 'Next' },
     { icon: 'repeat', title: 'Learning Ad Machine', line: 'From producing ads to learning from how they perform.', when: 'On the roadmap' },
-    { icon: 'package', title: 'Stock Assistant', line: 'Ask stock, arrival dates and forecasts in plain language.', when: 'Planned for winter' }
+    { icon: 'store', title: 'Dutch marketplaces', line: 'The same image and listing pipeline, ready for the next marketplace.', when: 'Next: ~100 products' }
   ],
   projects: [
     { cat: 'better', name: 'Fact Gate', status: 'live', line: 'Every claim checked' },
-    { cat: 'better', name: 'Product recommendations', status: 'live', line: 'Evidence-ranked, with the why' },
+    { cat: 'better', name: 'Product recommendations', status: 'live', line: 'Ranked per pet profile, 1.4× clicks' },
     { cat: 'better', name: 'Service Assist', status: 'live', line: 'Reply drafts in seconds' },
     { cat: 'better', name: 'Voice of Customer', status: 'live', line: 'All reviews, full text' },
     { cat: 'better', name: 'Personal pet page', status: 'pilot', line: 'A page for every pet' },
@@ -387,6 +388,7 @@ window.PD_CONTENT = {
     { cat: 'bigger', name: 'Creator sourcing', status: 'live', line: 'Finds the right micro-influencers' },
     { cat: 'bigger', name: 'Netherlands launch', status: 'live', line: 'Prepared with AI' },
     { cat: 'bigger', name: 'Advertorial images', status: 'live', line: 'Many styles per article' },
+    { cat: 'bigger', name: 'Dutch marketplaces', status: 'planned', line: 'Same image + listing pipeline' },
     { cat: 'bigger', name: 'Cross-channel customers', status: 'planned', line: 'Store and online' },
     { cat: 'faster', name: 'Market analysis', status: 'live', line: 'A day instead of weeks' },
     { cat: 'faster', name: 'Amazon listings', status: 'live', line: '~80 min instead of a week' },
@@ -398,10 +400,10 @@ window.PD_CONTENT = {
     { cat: 'faster', name: 'Refund automation', status: 'paused', line: 'Returns without clicks' },
     { cat: 'faster', name: 'Stock Assistant', status: 'planned', line: 'Stock in plain language' },
     { cat: 'faster', name: 'Planning check', status: 'planned', line: 'Catch planning errors early' },
-    { cat: 'infra', name: 'Knowly', status: 'live', line: 'One brain, 1,097 documents' },
+    { cat: 'infra', name: 'Knowly', status: 'live', line: '1,097 documents, 54,000+ checks' },
     { cat: 'infra', name: 'Private AI network', status: 'live', line: 'Everything inside, one login' },
     { cat: 'infra', name: 'Personal AI agents', status: 'live', line: 'Wired to our tools' },
-    { cat: 'infra', name: 'Skill library', status: 'live', line: '41 ready-made skills' },
+    { cat: 'infra', name: 'Skill library', status: 'live', line: '49 ready-made skills' },
     { cat: 'infra', name: 'CMS bridge', status: 'live', line: 'Approved content to the shop' },
     { cat: 'infra', name: 'AI steering', status: 'live', line: 'Owner, value, done-when' },
     { cat: 'infra', name: 'AI cost dashboard', status: 'live', line: 'Spikes before the invoice' },
@@ -412,13 +414,13 @@ window.PD_CONTENT = {
   ],
   notes: {
     's-three': 'Three words, and each one has to carry a number. <b>Better</b>: what our customers feel — factual errors in product content went from five to seven percent to zero once every claim was checked by code. <b>Bigger</b>: around ten finished ads a day for Meta, each one approved by a person. <b>Faster</b>: a full market analysis in one day instead of weeks. And the line at the bottom is the point of this talk.',
-    's-better': 'Better is what the customer feels. Four examples. The Fact Gate checks every claim against the recipe and our rules — the model writes, it never decides what is true. Recommendations are ranked on evidence for thirty pet profiles across our range. Service Assist drafts an answer in about five seconds, for half a cent; a person sends it. And every one of our fifty thousand reviews is searchable in full text — so every machine knows what customers actually say.',
-    's-bigger': 'Bigger means more customers, more markets, more channels. The Ad Machine produces around ten finished ads a day. The Visual Machine makes our images — logo and fonts are set by code, so they never drift; it built complete image sets for 160 products on Amazon. AI video ads already run on social. And the Partner Hub keeps around twelve hundred micro-influencers in one place.',
-    's-faster': 'Faster is the commodity part — but it still matters. A market analysis takes a day, with a second set of agents checking every figure against its source. Amazon listings are back live in about an hour instead of a week. A colleague in our back office built his own AI skills and saves three to four hours on every bank day. And forty-one ready-made skills are shared across the company.',
+    's-better': 'Better is what the customer feels. Four examples. The Fact Gate checks every claim against the recipe and our rules — the model writes, it never decides what is true. And personalisation starts with the pet: more than three hundred and fifty thousand pet profiles, and lists ranked for each of them get one point four times the clicks of a normal category list. Service Assist drafts an answer in about five seconds, for half a cent; a person sends it. And every one of our fifty thousand reviews is searchable in full text — so every machine knows what customers actually say.',
+    's-bigger': 'Bigger means more customers, more markets, more channels. The Ad Machine produces around ten finished ads a day. The Visual Machine makes our images — logo and fonts are set by code, so they never drift. It built complete Amazon image sets for 160 products in under a week; our design team used to manage about ten a week. AI video ads already run on social. And the Partner Hub keeps around twelve hundred micro-influencers in one place.',
+    's-faster': 'Faster is the commodity part — but it still matters. A market analysis takes a day, with a second set of agents checking every figure against its source. Amazon listings are back live in about an hour instead of a week. A colleague in our back office built his own AI skills and saves three to four hours on every bank day. And forty-nine ready-made skills are shared across the company.',
     's-journey': 'Here is how the machines work together, on one ad. <b>[click]</b> The Ad Machine starts from what already works — it reads which ads the market keeps running. <b>[click]</b> It turns a proven pattern into a brief for one of our products. <b>[click]</b> Knowly supplies the product facts; checking every claim against our 85 rules is live in our shop content and is the next step for ads. <b>[click]</b> The Visual Machine renders the image — the model paints, code sets logo, fonts and packs. <b>[click]</b> Machine QC flags layout problems; version two cut red flags from 22 to 6 in 69 ads. <b>[click]</b> In the Schieber a person can move, rewrite and approve every layer. <b>[click]</b> Then it ships, labelled as AI-made. No ad goes out without a human.',
-    's-network': 'What makes this one unit is the network. Every machine can call every other — the Ad Machine asks the Visual Machine, which asks Knowly. Our knowledge stays inside; a model only ever sees what one task needs. And it is not just machines: more than twenty-five colleagues work with their own AI agent, and every agent can ask the same brain.',
-    's-enables': 'So what does one network make possible? First, new machines in days: the Schieber went from idea to a working editor in a few days, because it inherited everything. Second, one truth everywhere. Third, we rent the models and own the system — we upgraded our image model in one evening. And fourth, new markets on the same rails: the Netherlands went live on the sixteenth of October.',
-    's-next': 'And it keeps growing — same brain, same network. The Translation Machine localises text and assets in our tone, not word for word. A Design Hub brings every creative machine into one place. The Ad Machine learns from how its ads perform. And a Stock Assistant answers supply questions in plain language.',
+    's-network': 'What makes this one unit is the network. Every machine can call every other — the Ad Machine asks the Visual Machine, which asks Knowly. Our knowledge stays inside; a model only ever sees what one task needs. And it is not just machines: more than seventy colleagues have their own AI seat — one seat reaches about three hundred tools — and every agent can ask the same brain.',
+    's-enables': 'So what does one network make possible? First, new machines in days: the Schieber went from idea to a working editor in a few days, because it inherited everything. Second, one truth everywhere — more than fifty-four thousand automatic checks since May. Third, we rent the models and own the system — we upgraded our image model in one evening. And fourth, new markets on the same rails: the Netherlands went live on the sixteenth of October.',
+    's-next': 'And it keeps growing — same brain, same network. The Translation Machine localises text and assets in our tone, not word for word. A Design Hub brings every creative machine into one place. The Ad Machine learns from how its ads perform. And the same image and listing pipeline is ready for our first Dutch marketplace.',
     's-lessons': 'If I had to give you five things to take home. Build the knowledge first — we started with the brain, not the tools. Put everything on one network. Rent the models, own the system. Keep a human on the slider: machines make the volume, people make the call. And give every project an owner, a number and a done-when — better, bigger or faster — or don\'t build it.'
   },
   footnote: 'Numbers as of October 2026, internal measurements and team reports.'
@@ -654,6 +656,9 @@ window.PD_NET = {
 .s-title .bg-net{position:absolute;right:-120px;top:40px;width:1300px;height:1000px;opacity:.55;pointer-events:none}
 .s-title .meta{margin-top:56px;display:flex;align-items:center;gap:28px;font-size:30px;color:var(--text-3)}
 .s-title .meta b{color:var(--text);font-weight:600}
+.s-title .facts{margin:26px 0 0;font-size:26px;color:var(--text-3);letter-spacing:.2px}
+.s-title .facts b{color:var(--lime);font-family:var(--font-head);font-weight:700;margin-right:6px}
+.s-title .facts span{margin:0 14px;color:var(--text-4)}
 .s-title .foot{position:absolute;left:116px;bottom:86px;display:flex;align-items:center;gap:26px}
 .hook-l{font-family:var(--font-head);font-weight:600;font-size:104px;line-height:1.04;letter-spacing:-2px;margin:0}
 .hook-l.b{color:var(--lime);margin-top:26px}
@@ -729,6 +734,7 @@ window.PD_NET = {
   <h1 class="h-xl rv" style="--d:1">AI at Pets Deli.</h1>
   <h1 class="h-xl rv" style="--d:2">Not a tool. <em>An infrastructure.</em></h1>
   <div class="meta rv" style="--d:4"><b>Tania Moser</b><span>CEO, Pets Deli</span></div>
+  <p class="facts rv" style="--d:5" id="title-facts"></p>
   <div class="foot rv" style="--d:6"><img class="logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI3LjIuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkViZW5lXzJfMDAwMDAwMDU5ODA2MTY2NzAyNTc3OTAwMDAwMDAwMDcxNzkwMzI3OTEyMDM5MDcyMjVfIgoJIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMzM1LjggNjUiCgkgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzM1LjggNjU7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDojRkZGRkZGO30KCS5zdDF7ZmlsbDojRkZGRkZGO30KCS5zdDJ7ZmlsbDojRkZGRkZGO30KPC9zdHlsZT4KPGcgaWQ9IkViZW5lXzEtMiI+Cgk8Zz4KCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNOS4xLDM4LjJ2OC43SDB2LTMyaDE1LjZjOC42LDAsMTIuOSw1LjQsMTIuOSwxMS43cy00LjMsMTEuNi0xMi45LDExLjdIOS4xTDkuMSwzOC4yeiBNOS4xLDMwLjZoNi41CgkJCWMyLjUsMCwzLjgtMS44LDMuOC0zLjlzLTEuMy00LTMuOC00SDkuMVYzMC42eiIvPgoJCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iNjIuNiw0Ni45IDM3LDQ2LjkgMzcsMTQuOCA2MiwxNC44IDYyLDIyLjQgNDYsMjIuNCA0NiwyNyA2MS4xLDI3IDYxLjEsMzQuNCA0NiwzNC40IDQ2LDM5LjIgCgkJCTYyLjYsMzkuMiAJCSIvPgoJCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iODAsMjIuMyA3MC43LDIyLjMgNzAuNywxNC44IDk4LjQsMTQuOCA5OC40LDIyLjMgODksMjIuMyA4OSw0Ni45IDgwLDQ2LjkgCQkiLz4KCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTI2LjYsMjMuN2MtMi4yLTEuNi00LjctMi4yLTcuNS0yLjJjLTIuMiwwLTQuMywwLjctNC4zLDIuNGMwLDIuMiwyLjIsMi41LDUuMywyLjhjNi40LDAuNywxMywzLjIsMTMsMTAuNgoJCQlzLTYuOSwxMC40LTE0LDEwLjRjLTUuOCwwLTkuOS0xLTE0LjMtNS42bDUtNS43YzMuMiwzLjEsNi43LDMuNiw5LjQsMy42YzMsMCw1LTEsNS0yLjhjMC0xLjYtMS44LTIuNi01LjMtMi45CgkJCWMtNy0wLjYtMTMtMi40LTEzLTEwLjRjMC02LjgsNi42LTkuNywxMy40LTkuN2M0LjgsMCw4LjYsMS4xLDEyLDMuOEwxMjYuNiwyMy43TDEyNi42LDIzLjd6Ii8+Cgk8L2c+Cgk8Zz4KCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMTM0LjcsNjVINzEuNnYtNC42aDYzLjFjMS4zLDAsMi4zLDEsMi4zLDIuM1MxMzYsNjUsMTM0LjcsNjUiLz4KCQk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMjExLjQsNjAuNGg2My4xVjY1aC02My4xYy0xLjMsMC0yLjMtMS0yLjMtMi4zUzIxMC4xLDYwLjQsMjExLjQsNjAuNCIvPgoJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0yMjkuNSwxNWMxMS4zLDAsMTYuNyw3LDE2LjcsMTUuOFMyNDEsNDcsMjI5LjUsNDdoLTEzLjdWMTVIMjI5LjV6IE0yMjQuOCwzOS40aDQuOGM1LjgsMCw3LjgtNC4zLDcuOC04LjcKCQkJcy0yLjItOC4xLTcuOC04LjFoLTQuOFYzOS40eiIvPgoJCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMjgwLjYsNDcgMjU1LDQ3IDI1NSwxNSAyODAsMTUgMjgwLDIyLjYgMjYzLjksMjIuNiAyNjMuOSwyNy4xIDI3OS4xLDI3LjEgMjc5LjEsMzQuNSAyNjMuOSwzNC41IAoJCQkyNjMuOSwzOS40IDI4MC42LDM5LjQgCQkiLz4KCQk8cG9seWdvbiBjbGFzcz0ic3QwIiBwb2ludHM9IjMwMS42LDE1IDMwMS42LDM5LjMgMzE3LDM5LjMgMzE3LDQ3IDI5Mi42LDQ3IDI5Mi42LDE1IAkJIi8+CgkJPHJlY3QgeD0iMzI2LjgiIHk9IjE1IiBjbGFzcz0ic3QwIiB3aWR0aD0iOSIgaGVpZ2h0PSIzMiIvPgoJCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xNzMuMSwzLjZjMTUuMSwwLDI3LjQsMTIuMywyNy40LDI3LjRzLTEyLjMsMjcuNC0yNy40LDI3LjRTMTQ1LjcsNDYuMSwxNDUuNywzMVMxNTgsMy42LDE3My4xLDMuNiBNMTczLjEsMAoJCQljLTE3LDAtMzEsMTMuOC0zMSwzMXMxNCwzMSwzMSwzMXMzMS0xNCwzMS0zMVMxOTAuMSwwLDE3My4xLDAiLz4KCQk8cGF0aCBjbGFzcz0ic3QyIiBkPSJNMTc3LjYsMjguN2MtMi4yLDAuNC0yLjYsMi41LTQuMSwyLjhjLTEuNiwwLjMtMy0xLjUtNS4xLTEuMWMtMy4yLDAuNi00LjgsMy42LTQuMiw2LjkKCQkJYzAuMiwwLjksMC41LDEuNywwLjksMi41YzAsMCwwLjQsMC43LDAuNiwxLjFjMy4zLDQuOCw5LDYuNSw5LDYuNWMwLjksMC4zLDIuMSwwLDIuOS0wLjVjMCwwLDQuOC0zLjYsNi4yLTkuMgoJCQljMCwwLDAuMi0wLjgsMC4yLTEuMmMwLjEtMC45LDAuMS0xLjcsMC0yLjZDMTgzLjMsMzAuNSwxODAuNywyOC4yLDE3Ny42LDI4LjciLz4KCQk8cGF0aCBjbGFzcz0ic3QyIiBkPSJNMTc5LjQsMTkuN2MwLDIuOC0xLjEsNS4xLTMuNSw1LjFjLTIuNCwwLTMuNS0yLjMtMy41LTUuMXMxLjktNS4xLDMuNS01LjFTMTc5LjQsMTYuOSwxNzkuNCwxOS43Ii8+CgkJPHBhdGggY2xhc3M9InN0MiIgZD0iTTE2Mi45LDIyLjNjMSwyLjgsMi45LDQuNyw1LjMsMy45YzIuNC0wLjksMi42LTMuNSwxLjYtNi40Yy0xLTIuOC0zLjctNC41LTUuMy0zLjkKCQkJQzE2Mi45LDE2LjUsMTYxLjksMTkuNSwxNjIuOSwyMi4zIi8+CgkJPHBhdGggY2xhc3M9InN0MiIgZD0iTTE4Ny42LDI1LjFjLTEuMSwyLjMtMi45LDMuOC00LjgsMi45Yy0xLjktMC45LTEuOS0zLjItMC45LTUuNXMzLjUtMy41LDQuOC0yLjkKCQkJQzE4OCwyMC4yLDE4OC43LDIyLjgsMTg3LjYsMjUuMSIvPgoJCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xNTcuNCwzMC41YzEuOCwxLjgsMy45LDIuNSw1LjQsMS4xYzEuNS0xLjUsMC43LTMuNi0xLjEtNS40cy00LjQtMi01LjQtMVMxNTUuNiwyOC43LDE1Ny40LDMwLjUiLz4KCTwvZz4KPC9nPgo8L3N2Zz4K" alt="Pets Deli"></div>
   <aside class="notes">Good morning. I want to show you how AI works inside Pets Deli — not as a list of tools, but as a piece of infrastructure we built. Everything I show runs in production or in pilot — unless I say “next” — and every claim has a number behind it.</aside>
 </section>
@@ -821,7 +827,7 @@ window.PD_NET = {
   <div class="pn">
     <div class="pn-vis rv" style="--d:1"><svg id="mesh" viewBox="0 0 900 660" aria-hidden="true"></svg></div>
     <div class="pn-list">
-      <div class="pn-item rv" style="--d:2"><i data-ic="share-2" class="ic"></i><div><h3>Every machine calls every other</h3><p>The Ad Machine asks the Visual Machine, which asks Knowly — inside one network, no detours.</p></div></div>
+      <div class="pn-item rv" style="--d:2"><i data-ic="share-2" class="ic"></i><div><h3>Every machine calls every other</h3><p>Two dozen AI services in one network: the Ad Machine asks the Visual Machine, which asks Knowly — no detours.</p></div></div>
       <div class="pn-item rv" style="--d:3"><i data-ic="lock" class="ic"></i><div><h3>Our knowledge stays ours</h3><p>Product data, reviews and rules live inside our network. A model only ever sees what one task needs.</p></div></div>
       <div class="pn-item rv" style="--d:4"><i data-ic="users" class="ic"></i><div><h3>People and agents plug in</h3><p data-num="pn3">⟦colleagues and agents⟧</p></div></div>
     </div>
@@ -983,6 +989,8 @@ window.DECK = { onEnter: {} };
   }
   const S = C.sections || {};
   ['better', 'bigger', 'faster'].forEach(w => { const el = document.getElementById('cards-' + w); if (el && S[w]) el.innerHTML = S[w].map(c => card(c)).join(''); });
+  const F = C.facts || {}, tf = document.getElementById('title-facts');
+  if (tf && F.shops) tf.innerHTML = [[F.shops, 'country shops'], [F.channels, 'sales channels'], [F.products, 'products'], [F.profiles, 'pet profiles']].map(([n, l]) => `<b>${esc(n)}</b>${esc(l)}`).join('<span>·</span>');
   const INS = C.insights || {};
   ['better', 'bigger', 'faster'].forEach(w => { const sl = document.getElementById('s-' + w); if (sl && INS[w]) sl.querySelector('.grid').insertAdjacentHTML('afterend', `<p class="insight rv" style="--d:3">${esc(INS[w])}</p>`); });
   const en = document.getElementById('cards-enables'); if (en && C.enables) en.innerHTML = C.enables.map(c => card(c)).join('');
